@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 from config.base_config import BaseConfig
 from pages.login_page import LoginPage
+from utils.artifacts import screenshot_path
 
 
 def test_inspect_dashboard():
@@ -47,8 +48,8 @@ def test_inspect_dashboard():
                 print(f"  {i+1}. {text}")
 
             # Take screenshot of full page
-            page.screenshot(path="dashboard_inspection.png")
-            print("\nScreenshot saved: dashboard_inspection.png")
+            page.screenshot(path=screenshot_path("test_inspect_dashboard"))
+            print("\nScreenshot saved in test-results/screenshots")
 
             # Get page title
             title = page.title()

@@ -117,9 +117,9 @@ User management operations:
 ## 📈 Test Reports
 
 ### HTML Report Generation:
-- File: `report.html`
+- File: `test-results/report.html`
 - Includes: Test results, execution time, screenshots, system info
-- Screenshots: Stored as `test_*.png` in project root
+- Screenshots: Stored in `test-results/screenshots/`
 
 ### Report Details:
 - Total Tests: 7

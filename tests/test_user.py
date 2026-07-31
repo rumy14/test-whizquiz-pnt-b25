@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 from config.base_config import BaseConfig
 from pages.login_page import LoginPage
+from utils.artifacts import screenshot_path
 
 
 def test_navigate_to_users():
@@ -25,7 +26,7 @@ def test_navigate_to_users():
             assert "/users" in current_url, "Users page failed to load"
             print("Successfully navigated to Users page")
 
-            page.screenshot(path="test_users_page.png")
+            page.screenshot(path=screenshot_path("test_user_users_page"))
 
         finally:
             browser.close()
@@ -55,11 +56,11 @@ def test_create_user():
                 add_user_button.first.click()
                 page.wait_for_timeout(1000)
                 print("Clicked Add User button")
-                page.screenshot(path="test_user_form.png")
+                page.screenshot(path=screenshot_path("test_user_form"))
             else:
                 print("Add User button not found on this page")
                 # Take screenshot of current page
-                page.screenshot(path="test_users_page_structure.png")
+                page.screenshot(path=screenshot_path("test_user_users_page_structure"))
 
         finally:
             browser.close()
@@ -100,7 +101,7 @@ def test_users_page_structure():
                 if link_text and len(link_text) > 0:
                     print(f"  - {link_text}")
 
-            page.screenshot(path="test_users_page_full.png")
+            page.screenshot(path=screenshot_path("test_user_users_page_full"))
 
         finally:
             browser.close()

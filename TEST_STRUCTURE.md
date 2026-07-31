@@ -16,10 +16,11 @@ test-whizquiz-pnt-b25/
 │   ├── menu_page.py             # Menu management page
 │   └── user_page.py             # User management page
 ├── tests/
+│   ├── screenshots/             # Generated screenshots, kept out of the project root
 │   ├── test_login.py            # Login test cases
 │   ├── test_menu.py             # Menu management test cases
 │   └── test_user.py             # User management test cases
-├── run_test.py                  # Main test runner
+├── run_test.py                  # Main test runner with test discovery
 └── report.html                  # Test execution report (generated)
 ```
 
@@ -76,8 +77,8 @@ pytest tests/test_user.py::test_create_user -v --html=report.html
 ```
 
 ## 📊 Report Generation
-- HTML report: `report.html`
-- Screenshots: `test_*.png` (generated in project root)
+- HTML report: `test-results/report.html`
+- Screenshots: `test-results/screenshots/test_<flow>_<state>.png`
 
 ## ✅ Dashboard Menu Navigation
 After login, the dashboard displays menu items that can be accessed:
@@ -87,5 +88,5 @@ After login, the dashboard displays menu items that can be accessed:
 ## 🔍 Where to Add New Tests
 1. Create new test file in `tests/` directory: `tests/test_feature_name.py`
 2. Create corresponding page object in `pages/` directory if needed
-3. Import and add test file path to `run_test.py`
+3. Save screenshots under `test-results/screenshots/` using a descriptive flow name
 4. Run tests: `python run_test.py`

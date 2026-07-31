@@ -17,7 +17,7 @@ git status
 This shows what files have changed or are untracked.
 
 **Current changes:**
-- Modified: `report.html`
+- Generated output: `test-results/report.html` (ignored by git)
 - New files: 
   - `pages/all_user_page.py` (FIXED)
   - `pages/create_user_page.py` (FIXED)

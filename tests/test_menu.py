@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 from config.base_config import BaseConfig
 from pages.login_page import LoginPage
+from utils.artifacts import screenshot_path
 
 
 def test_view_dashboard_menus():
@@ -28,7 +29,7 @@ def test_view_dashboard_menus():
                 if menu_text and href:
                     print(f"  - {menu_text.replace(chr(10), ' ')}")
 
-            page.screenshot(path="test_dashboard_menus.png")
+            page.screenshot(path=screenshot_path("test_menu_dashboard_menus"))
             print("\nDashboard menus inspection completed")
 
         finally:
@@ -64,7 +65,7 @@ def test_navigate_through_menus():
                 assert path in current_url, f"Failed to navigate to {menu_name}"
                 print(f"Successfully navigated to: {menu_name}")
 
-            page.screenshot(path="test_menu_navigation.png")
+            page.screenshot(path=screenshot_path("test_menu_navigation"))
 
         finally:
             browser.close()

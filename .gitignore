@@ -35,11 +35,10 @@ ENV/
 .DS_Store
 
 # Test artifacts
-report.html
+playwright-report/*
+!playwright-report/README.md
+test-results/*
+!test-results/README.md
 .pytest_cache/
 .coverage
 htmlcov/
-
-# Screenshot files (optional - can be removed to keep screenshots)
-# test_*.png
-# dashboard_inspection.png

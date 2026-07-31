@@ -1,6 +1,6 @@
 from pages.base_page import BasePage
 
-class UserPage(BasePage):
+class UsersPage(BasePage):
     ADD_USER_BUTTON = "button:has-text('Add User'), button:has-text('Create User'), [data-action='add-user']"
     USER_EMAIL_INPUT = "[id*='email'], [placeholder*='Email'], input[name*='email']"
     USER_NAME_INPUT = "[id*='name'], [placeholder*='Name'], input[name*='name']"
@@ -59,3 +59,7 @@ class UserPage(BasePage):
         if search_input.count() > 0:
             search_input.first.fill(email)
             self.page.wait_for_timeout(1000)
+
+
+# Keep the singular name available for existing tests and callers.
+UserPage = UsersPage
