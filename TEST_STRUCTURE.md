@@ -8,32 +8,30 @@ test-whizquiz-pnt-b25/
 │   ├── __pycache__/
 │   └── base_config.py           # Configuration (BASE_URL, TIMEOUT)
 ├── pages/
-│   ├── __pycache__/
-│   ├── base_page.py             # Base class for all pages
-│   ├── login_page.py            # Login page object
-│   ├── inventory_page.py        # Inventory/Dashboard page object
-│   ├── dashboard_page.py        # Dashboard with menu navigation
-│   ├── menu_page.py             # Menu management page
-│   └── user_page.py             # User management page
+│   ├── base_page.py              # Base class for all pages
+│   ├── auth/                     # Login page objects
+│   ├── dashboard/                # Dashboard page objects
+│   ├── menu/                     # Menu page objects
+│   └── users/                    # User management page objects
 ├── tests/
-│   ├── screenshots/             # Generated screenshots, kept out of the project root
-│   ├── test_login.py            # Login test cases
-│   ├── test_menu.py             # Menu management test cases
-│   └── test_user.py             # User management test cases
+│   ├── auth/                     # Authentication tests
+│   ├── menu/                     # Menu and dashboard navigation tests
+│   ├── users/                    # User management tests
+│   └── diagnostics/              # Diagnostic inspection tests
 ├── run_test.py                  # Main test runner with test discovery
 └── report.html                  # Test execution report (generated)
 ```
 
 ## 📋 Test Files & Test Cases
 
-### 1. **test_login.py** - Authentication Tests
+### 1. **tests/auth/test_login.py** - Authentication Tests
 - `test_valid_login()` - Validates admin login with correct credentials
 
-### 2. **test_menu.py** - Menu Management Tests
+### 2. **tests/menu/test_menu.py** - Menu Management Tests
 - `test_create_menu()` - Creates a new menu and verifies success
 - `test_view_dashboard_menus()` - Views dashboard and lists all available menus
 
-### 3. **test_user.py** - User Management Tests
+### 3. **tests/users/test_user.py** - User Management Tests
 - `test_create_user()` - Creates a single new user
 - `test_create_multiple_users()` - Creates multiple users in sequence
 
@@ -61,6 +59,14 @@ test-whizquiz-pnt-b25/
 
 ## 🚀 Running Tests
 
+Run each module incrementally:
+```bash
+pytest tests/auth -v
+pytest tests/menu -v
+pytest tests/users -v
+pytest tests/diagnostics -v
+```
+
 **Run all tests with HTML report:**
 ```bash
 python run_test.py
@@ -86,7 +92,7 @@ After login, the dashboard displays menu items that can be accessed:
 - View all menus using: `dashboard_page.get_all_menu_items()`
 
 ## 🔍 Where to Add New Tests
-1. Create new test file in `tests/` directory: `tests/test_feature_name.py`
-2. Create corresponding page object in `pages/` directory if needed
+1. Create a page package under the matching module in `pages/`.
+2. Create the matching test package under `tests/`.
 3. Save screenshots under `test-results/screenshots/` using a descriptive flow name
-4. Run tests: `python run_test.py`
+4. Run only that module, then run the full suite: `pytest tests/<module> -v` and `pytest tests -v`

@@ -1,10 +1,10 @@
 """Page objects for the WhizQuiz admin application."""
 
 from pages.base_page import BasePage
-from pages.dashboard_page import DashboardPage
-from pages.login_page import LoginPage
-from pages.menu_page import MenuPage
-from pages.user_page import UserPage, UsersPage
+from pages.auth import LoginPage
+from pages.dashboard import DashboardPage
+from pages.menu import MenuPage
+from pages.users import UserPage, UsersPage
 
 __all__ = [
     "BasePage",
