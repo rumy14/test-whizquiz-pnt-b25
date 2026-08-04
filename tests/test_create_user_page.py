@@ -1,10 +1,10 @@
 from playwright.sync_api import sync_playwright
 from config.base_config import BaseConfig
-from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
-from pages.user_page import UsersPage
-from pages.create_user_page import CreateUserPage
-from pages.all_user_page import AllUserPage
+from pages.inventory.inventory_page import InventoryPage
+from pages.auth.login_page import LoginPage
+from pages.users.user_page import UsersPage
+from pages.users.create_user_page import CreateUserPage
+from pages.users.all_user_page import AllUserPage
 import time
 
 
