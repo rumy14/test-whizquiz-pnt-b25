@@ -1,2 +1,49 @@
+<<<<<<< HEAD
 */__pycache__/
 __pycache__/
+=======
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test artifacts
+playwright-report/*
+!playwright-report/README.md
+test-results/*
+!test-results/README.md
+.pytest_cache/
+.coverage
+htmlcov/
+>>>>>>> 77c80fd7483add4b1789892f2ed53b1cc4ecb958

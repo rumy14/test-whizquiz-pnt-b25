@@ -1,4 +1,5 @@
 import pytest
+<<<<<<< HEAD
 import os
 from datetime import datetime
 
@@ -19,4 +20,16 @@ if __name__ == "__main__":
         f"--html={report_file}",
         "--self-contained-html",
         "-v"
+=======
+from utils.artifacts import TEST_RESULTS_DIR
+
+
+if __name__ == "__main__":
+    TEST_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    pytest.main([
+   "tests",
+       f"--html={TEST_RESULTS_DIR / 'report.html'}",
+       "--self-contained-html",
+       "-v"
+>>>>>>> 77c80fd7483add4b1789892f2ed53b1cc4ecb958
     ])
