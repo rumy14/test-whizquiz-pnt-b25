@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+from pages.auth.login_page import LoginPage
+
+__all__ = ["LoginPage"]
+=======
 from pages.base_page import BasePage
 
 
@@ -14,3 +19,4 @@ class LoginPage(BasePage):
 
     def get_error_message(self):
         return self.page.locator(self.ERROR_MESSAGE).text_content()
+>>>>>>> 77c80fd7483add4b1789892f2ed53b1cc4ecb958

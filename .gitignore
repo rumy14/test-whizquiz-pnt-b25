@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+*/__pycache__/
+__pycache__/
+=======
 # Python
 __pycache__/
 *.py[cod]
@@ -42,3 +46,4 @@ test-results/*
 .pytest_cache/
 .coverage
 htmlcov/
+>>>>>>> 77c80fd7483add4b1789892f2ed53b1cc4ecb958
