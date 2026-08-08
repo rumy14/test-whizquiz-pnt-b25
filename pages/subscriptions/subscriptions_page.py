@@ -73,13 +73,33 @@ class SubscriptionsPage(BasePage):
         row = self.page.locator(self.TABLE_ROWS).nth(row_index)
         cells = row.locator("td")
         
+        # Helper to safely get cell text
+        def cell_text(n):
+            if cells.count() > n:
+                txt = cells.nth(n).text_content()
+                return txt.strip() if txt else ""
+            return ""
+
+        # Determine status: prefer checkbox if present
+        status = ""
+        if cells.count() > 5:
+            status_cell = cells.nth(5)
+            try:
+                checkbox = status_cell.locator("input[type='checkbox']")
+                if checkbox.count() > 0:
+                    status = "Active" if checkbox.first.is_checked() else "Inactive"
+                else:
+                    status = cell_text(5)
+            except Exception:
+                status = cell_text(5)
+
         return {
-            "user_name": cells.nth(0).text_content().strip() if cells.count() > 0 else "",
-            "plan_name": cells.nth(1).text_content().strip() if cells.count() > 1 else "",
-            "plan_amount": cells.nth(2).text_content().strip() if cells.count() > 2 else "",
-            "start_date": cells.nth(3).text_content().strip() if cells.count() > 3 else "",
-            "end_date": cells.nth(4).text_content().strip() if cells.count() > 4 else "",
-            "status": cells.nth(5).text_content().strip() if cells.count() > 5 else "",
+            "user_name": cell_text(0),
+            "plan_name": cell_text(1),
+            "plan_amount": cell_text(2),
+            "start_date": cell_text(3),
+            "end_date": cell_text(4),
+            "status": status,
         }
     
     def get_all_rows_data(self):
@@ -239,5 +259,10 @@ class SubscriptionsPage(BasePage):
     def verify_currency_format(self, amount_string):
         """Verify amount is in correct currency format"""
         import re
+        if not amount_string:
+            return False
+        # Normalize: remove whitespace and currency spacing like "$ 599.00"
+        s = amount_string.strip()
+        s = s.replace(' ', '')
         pattern = r'^\$[\d,]+\.\d{2}$'
-        return re.match(pattern, amount_string) is not None
+        return re.match(pattern, s) is not None
